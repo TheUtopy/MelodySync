@@ -1,0 +1,10 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@font-face {
+    font-family: 'LeagueGothic-Regular';
+    src: url('../fonts/LeagueGothic-Regular.ttf') format('truetype');
+}

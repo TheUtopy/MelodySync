@@ -18,13 +18,13 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
-      // style: [
-      //   `
-      //   :root {
-      //     background-color: #fff0f3;
-      //     font-family: 'LeagueGothic-Regular', sans-serif;
-      //   }`
-      // ]
+      style: [
+        `
+        :root {
+          background-color: #fff0f3;
+          color: #590d22;
+        }`
+      ]
     }
   }
 })
