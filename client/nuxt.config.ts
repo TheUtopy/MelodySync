@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     head: {
       title: 'Melody Sync',
       htmlAttrs: {
-        lang: 'fr'
+        lang: 'en'
       },
       meta: [
         { charset: 'utf-8' },

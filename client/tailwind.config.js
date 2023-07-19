@@ -16,15 +16,17 @@ export default {
                 },
             },
             fontSize: {
-                'wide': 'calc(100vw/5)'
+                'wide': 'calc(100vw/5)',
+                'xxl': '250px',
             },
             fontFamily: {
-                'sans': ['LeagueGothic-Regular', 'cursive', 'sans-serif'],
-                'serif': ['LeagueGothic-Regular', 'cursive', 'sans-serif'],
-                'mono': ['LeagueGothic-Regular', 'cursive', 'sans-serif'],
-                'display': ['LeagueGothic-Regular', 'cursive', 'sans-serif'],
-                'body': ['LeagueGothic-Regular', 'cursive', 'sans-serif'],
+                'sans': ['LeagueGothic-Regular', 'sans-serif'],
+                'serif': ['GolosText-Regular', 'sans-serif'],
+                'mono': ['GolosText-Regular', 'sans-serif'],
+                'display': ['LeagueGothic-Regular', 'sans-serif'],
+                'body': ['GolosText-Regular', 'sans-serif'],
                 'league-gothic': ['LeagueGothic-Regular', 'sans-serif'],
+                'golos-text': ['GolosText-Regular', 'cursive', 'sans-serif'],
             },
             variants: {},
             plugins: []

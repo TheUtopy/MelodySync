@@ -8,3 +8,8 @@
     font-family: 'LeagueGothic-Regular';
     src: url('../fonts/LeagueGothic-Regular.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'GolosText-Regular';
+    src: url('../fonts/GolosText-Regular.ttf') format('truetype');
+}
