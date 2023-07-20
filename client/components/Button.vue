@@ -4,6 +4,7 @@
     :class="{
         'bg-pinky-800 hover:bg-pinky-500': color === 'burgundy',
         'bg-pinky-1000 hover:bg-pinky-900': color === 'black',
+        'bg-pinky-700 hover:bg-pinky-800': color === 'red',
     }"
     class="text-white font-serif text-lg px-4 py-3 rounded-lg transition-colors duration-500"
     >

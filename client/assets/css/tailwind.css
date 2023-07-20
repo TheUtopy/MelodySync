@@ -13,3 +13,15 @@
     font-family: 'GolosText-Regular';
     src: url('../fonts/GolosText-Regular.ttf') format('truetype');
 }
+
+h2 {
+    @apply text-4xl
+}
+
+h3 {
+    @apply text-xl font-serif pb-4
+}
+
+p {
+    @apply font-serif
+}
