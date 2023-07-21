@@ -1,10 +1,7 @@
 <template>
+  <main>
   <section class="max-w-5xl h-min mx-auto flex flex-col">
-    <div class="text-center">
-        <h1 class="my-auto text-wide whitespace-nowrap lg:text-xxl xl:text-xxl">
-            MELODY SYNC
-        </h1>
-    </div>
+    <Header />
 
     <p class="text-xl mx-10 max-w-3xl">
         Welcome to Melody Sync, the ultimate community for music learners. Exchange tips, showcase accomplishments,
@@ -21,7 +18,7 @@
 
   <section class="bg-pinky-900 h-min text-pinky-50 text-lg py-24">
     <div class="grid grid-cols-2 grid-rows-2 w-4/5 mx-auto gap-16">
-      <img src="../static/images/Orchestra.png" class="index-image justify-self-end" alt="orchestra">
+      <Image source="../static/images/Orchestra.png" alt="orchestra" />
 
       <article class="flex flex-col justify-center">
         <h2>Share Advice, Learn Faster, and Make Friends</h2>
@@ -35,7 +32,7 @@
           progress and encourage others to reach new heights!</p>
       </div>
       
-      <img src="../static/images/Guitar.png" class="index-image justify-self-start" alt="guitar">
+      <Image source="../static/images/Guitar.png" alt="guitar" />
     </div>
   </section>
 
@@ -73,13 +70,10 @@
         </div>
       </article>
 
-      <h3 class="text-3xl mt-20">Got another question? 
-        <nuxt-link to="/contact" class="underline hover:no-underline hover:text-pink-800 visited:text-pink-700">
-          You can contact us here.
-        </nuxt-link>
-      </h3>
+      <Footer />
     </div>
   </section>
+  </main>
 </template>
 
 <style>
