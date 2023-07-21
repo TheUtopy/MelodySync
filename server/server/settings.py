@@ -131,5 +131,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Do use this in production :
+AUTH_USER_MODEL = 'MelodySync.User'
+
+# Do not use this in production :
 CORS_ALLOW_ALL_ORIGINS = True
