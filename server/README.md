@@ -18,7 +18,6 @@ This should return a 201 with :
 	"user": {<br>
 		"username": "test",<br>
 		"email": "test@test.com",<br>
-		"password": "pbkdf2_sha256$600000$e9JlmJyL4Mt7Brzf2MAkxm$IRI7Tnbfv4jYQQY1y/vtzmrv/BldE/PgfAYFRWyryjE="<br>
 	}
 }
 
@@ -30,6 +29,15 @@ Error 400 :
 - "email": [
 		"Enter a valid email address."
 	]
+- "password": [
+		"This password is too short. It must contain at least 8 characters.",
+		"This password is too common.",
+		"This password is entirely numeric.",
+		"The password is too similar to the username.",
+		"The password is too similar to the email."
+	]
+
+Error 409 :
 - "username": [
 		"A user with that username already exists."
 	],

@@ -135,3 +135,4 @@ AUTH_USER_MODEL = 'MelodySync.User'
 
 # Do not use this in production :
 CORS_ALLOW_ALL_ORIGINS = True
+

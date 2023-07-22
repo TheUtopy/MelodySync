@@ -1,6 +1,8 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from django.core.exceptions import ValidationError as DjangoValidationError
+from rest_framework.exceptions import ValidationError as DRFValidationError
 
 from .serializers import UserSerializer
 from .models import User
@@ -13,12 +15,19 @@ class UserViewSet(ModelViewSet):
 
     def create(self, request, **kwargs):
         serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
+
+        try:
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
             return Response({'user': serializer.data}, status=status.HTTP_201_CREATED)
-        else:
-            user_already_exist = "username" in serializer.errors and serializer.errors["username"][0].code == "unique"
-            email_already_exist = "email" in serializer.errors and serializer.errors["email"][0].code == "unique"
-            if user_already_exist or email_already_exist:
-                return Response(serializer.errors, status=status.HTTP_409_CONFLICT)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        except DRFValidationError as e:
+            not_unique_username = "username" in e.get_codes() and e.get_codes()["username"] == ["unique"]
+            not_unique_email = "email" in e.get_codes() and e.get_codes()["email"] == ["unique"]
+            if not_unique_username or not_unique_email:
+                return Response(e.detail, status=status.HTTP_409_CONFLICT)
+
+            return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+
+        except DjangoValidationError as e:
+            return Response({'password': e.messages}, status=status.HTTP_400_BAD_REQUEST)
