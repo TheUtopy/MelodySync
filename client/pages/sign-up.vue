@@ -14,6 +14,7 @@
               @update:input-value="password = $event" />
             <FieldInForm label="Confirm Password" inputId="confirmPassword" inputType="password"
               :input-value="confirmPassword" @update:input-value="confirmPassword = $event" />
+            <p class="text-pinky-100 mt-[-1.5rem] mb-[2rem]" v-if="showNotMatchingPassword">* Passwords do not match</p>
             <Button color="red" is-submit-button @submit-form="submitForm">Submit</Button>
           </form>
           <h3>Already have an account? <NuxtLink to="/login"
@@ -36,30 +37,47 @@ export default {
   data() {
     return {
       labelActive: false,
-      errorMessage: {},
       username: '',
       email: '',
       password: '',
       confirmPassword: '',
     };
   },
+  computed: {
+    showNotMatchingPassword() {
+      return this.password !== this.confirmPassword;
+    },
+  },
   methods: {
     async submitForm(e) {
       e.preventDefault();
       // Vérification des champs requis
-      if (this.username === '') {
-        this.errorMessage['username'] = 'Username is required';
-      };
-      if (this.email === '') {
-        this.errorMessage['email'] = 'Email is required';
-      };
-      if (this.password === '') {
-        this.errorMessage['password'] = 'Password is required';
-      };
+      try {
+        if (this.username === '') {
+          throw new Error('Username is required');
+        };
+        if (this.email === '') {
+          throw new Error('Email is required');
+        };
+        if (this.password === '') {
+          throw new Error('Password is required');
+        };
+        const regex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}/;
+        if (!regex.test(this.password)) {
+          throw new Error('Password must at least be 8 characters long and have one digit and one letter');
+        };
+        if (this.password.length > 24) {
+          throw new Error('You password shouldn\'t exceed 24 characters')
+        }
+        if (this.password !== this.confirmPassword) {
+          throw new Error('Passwords don\'t match');
+        };
+      } catch (error) {
+        alert(error);
+      }
 
       // Logique de soumission du formulaire
       if (this.username !== '' && this.email !== '' && this.password !== '' && this.confirmPassword !== '') {
-        console.log(this.username, this.email, this.password, this.confirmPassword);
         // Soumettre le formulaire
         const formData = {
           username: this.username,
@@ -73,8 +91,19 @@ export default {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
           });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            console.log('Successful inscription');
+            this.$router.push('/login');
+          } else {
+            for (let key in data) {
+              alert(data[key]);
+            };
+          }
         } catch (error) {
-          console.log(error);
+          console.log('Error: ', error.response);
         }
       }
     },
