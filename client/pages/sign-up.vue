@@ -53,60 +53,77 @@ export default {
       e.preventDefault();
       // Vérification des champs requis
       try {
-        if (this.username === '') {
-          throw new Error('Username is required');
-        };
-        if (this.email === '') {
-          throw new Error('Email is required');
-        };
-        if (this.password === '') {
-          throw new Error('Password is required');
-        };
-        const regex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}/;
-        if (!regex.test(this.password)) {
-          throw new Error('Password must at least be 8 characters long and have one digit and one letter');
-        };
-        if (this.password.length > 24) {
-          throw new Error('You password shouldn\'t exceed 24 characters')
-        }
-        if (this.password !== this.confirmPassword) {
-          throw new Error('Passwords don\'t match');
-        };
-      } catch (error) {
-        alert(error);
-      }
+        this.validateRequiredFields();
+        this.validatePasswordFormat();
+        this.validatePasswordLenght();
+        this.validatePasswordsSimilarity();
 
-      // Logique de soumission du formulaire
-      if (this.username !== '' && this.email !== '' && this.password !== '' && this.confirmPassword !== '') {
-        // Soumettre le formulaire
         const formData = {
           username: this.username,
           email: this.email,
           password: this.password,
         };
 
-        try {
-          const response = await fetch('http://localhost:8000/api/user/', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-          });
+        await this.submitFormData(formData);
+      } catch (error) {
+        alert(error.message);
+      };
+    },
 
-          const data = await response.json();
+    validateRequiredFields() {
+      if (this.username === '') {
+        throw new Error('Username is required');
+      };
+      if (this.email === '') {
+        throw new Error('Email is required');
+      };
+      if (this.password === '') {
+        throw new Error('Password is required');
+      };
+    },
 
-          if (response.ok) {
-            console.log('Successful inscription');
-            this.$router.push('/login');
-          } else {
-            for (let key in data) {
-              alert(data[key]);
-            };
-          }
-        } catch (error) {
-          console.log('Error: ', error.response);
-        }
+    validatePasswordFormat() {
+      const regex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}/;
+      if (!regex.test(this.password)) {
+        throw new Error('Password must at least be 8 characters long and have one digit and one letter');
+      };
+    },
+
+    validatePasswordLenght() {
+      if (this.password.length > 24) {
+        throw new Error('You password shouldn\'t exceed 24 characters');
+      };
+    },
+
+    validatePasswordsSimilarity() {
+      if (this.password !== this.confirmPassword) {
+        throw new Error('Passwords don\'t match');
+      };
+    },
+
+    async submitFormData(formData) {
+      try {
+        const response = await fetch('http://localhost:8000/api/user/', {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          for (let key in data) {
+            throw new Error(data[key]);
+          };
+        } else {
+          console.log('Successful signup!');
+          this.$router.push('/login');
+        };
+
+      } catch (error) {
+        alert(error.message);
       }
     },
-  },
+  }
 };
 </script>
