@@ -5,40 +5,14 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "start": "nuxt start",
-    "test": "jest",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/plugin-syntax-jsx": "^7.22.5",
-    "@babel/preset-env": "^7.22.9",
-    "@babel/preset-react": "^7.22.5",
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18.16.19",
-    "@vue/test-utils": "^2.4.1",
-    "babel-jest": "^29.6.1",
-    "jest": "^29.6.1",
     "nuxt": "^3.6.3"
-  },
-  "dependencies": {
-    "@nuxt/test-utils": "github:nuxt/test-utils",
-    "vitest": "^0.33.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "^@/(.*)$": "./$1"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.js$": "./node_modules/babel-jest",
-      ".*\\.(vue)$": "./node_modules/@nuxt/vue3-jest"
-    }
   }
 }
