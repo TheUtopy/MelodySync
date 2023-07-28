@@ -1,5 +1,8 @@
 # API DOCUMENTATION
 
+- [SIGN-UP](#SIGN UP)
+- [LOGIN](#LOGIN)
+
 ## SIGN UP
 
 ### POST /api/user/
@@ -65,7 +68,9 @@ It should return a 200 with :
 
 And a session cookie that look like :
 
-sessionid: 4cojwlx1izctcaugt0a8kxmnu146jk60
+>sessionid: 4cojwlx1izctcaugt0a8kxmnu146jk60
+
+This session cookie have a 2 hours live spawn in the server side (unless the session data is updated). On the client side, the session cookie doesn't have any expiry time. Instead it's deleted when the user close the navigator.
 
 Else it returns a 400 with :
 
