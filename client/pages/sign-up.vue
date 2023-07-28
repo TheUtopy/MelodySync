@@ -3,7 +3,7 @@
     <Header />
     <section class="bg-pinky-900 h-min py-20 text-pinky-50">
       <article class=" flex flex-col md:flex-row justify-evenly">
-        <div class="mx-auto">
+        <div class="mx-auto pl-10">
           <h2 class="pb-8">Sign Up</h2>
           <form @submit="submitForm" class="text-pinky-1000 font-serif pb-6">
             <FieldInForm label="Username" inputId="username" inputType="text" :input-value="username"
@@ -23,8 +23,9 @@
         </div>
         <div class="pt-[4.4rem] mx-auto flex flex-col items-center">
           <Image source="../static/images/Violin.png" alt="violin" class="max-w-sm lg:max-w-lg" />
-          <p class="max-w-sm lg:max-w-lg text-sans text-3xl text-pink-100 text-center pt-8">Don't miss a beat! Sign in now
-            and start amplifying your musical journey.</p>
+          <p class="max-w-sm lg:max-w-lg text-sans text-3xl text-pink-100 text-center pt-8">
+            Don't miss a beat! Sign up now and start amplifying your musical journey.
+          </p>
         </div>
       </article>
       <Footer class="text-center py-10" />
