@@ -63,6 +63,10 @@ It should return a 200 with :
 	"status": "login successful"<br>
 }
 
+And a session cookie that look like :
+
+sessionid: 4cojwlx1izctcaugt0a8kxmnu146jk60
+
 Else it returns a 400 with :
 
 >{<br>

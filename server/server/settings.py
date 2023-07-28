@@ -145,3 +145,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+SESSION_COOKIE_AGE = 24 * 60 * 60
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

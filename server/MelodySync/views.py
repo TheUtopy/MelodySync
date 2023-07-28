@@ -42,6 +42,7 @@ class UserViewSet(ModelViewSet):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
+            request.session['username'] = username
             return Response({'status': 'login successful'}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
