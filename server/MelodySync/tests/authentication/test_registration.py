@@ -145,3 +145,15 @@ class TestUserSignup(APITestCase):
             response.data['password'],
             ['The password is too similar to the email.']
         )
+
+        data_similar_email = {
+            'username': 'testuser',
+            'email': 'testuser@example.com',
+            'password': 'gernjgejrbgkjerkjg45643531531534564sdqggs545646546'
+        }
+        response = self.client.post(self.url, data_similar_email, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.data['password'],
+            ['Password must be at most 24 characters long.']
+        )
