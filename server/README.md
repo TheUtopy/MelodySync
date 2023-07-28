@@ -1,8 +1,8 @@
 # API DOCUMENTATION
 
-## SIGN IN
+## SIGN UP
 
-### POST api/user/
+### POST /api/user/
 
 Expected JSON :
 
@@ -46,3 +46,25 @@ Error 409 :
 	]
 
 
+## LOGIN
+
+### POST /api/user/login/
+
+Expected format :
+
+>{<br>
+	"username": "test",<br>
+	"password": "poisfd45646"<br>
+}
+
+It should return a 200 with :
+
+>{<br>
+	"status": "login successful"<br>
+}
+
+Else it returns a 400 with :
+
+>{<br>
+	"error": "Invalid Credentials"<br>
+}
