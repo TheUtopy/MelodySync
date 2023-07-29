@@ -1,7 +1,7 @@
 # API DOCUMENTATION
 
-- [SIGN-UP](#SIGN UP)
-- [LOGIN](#LOGIN)
+- [SIGN-UP](#sign-up)
+- [LOGIN](#login)
 
 ## SIGN UP
 
@@ -66,13 +66,17 @@ It should return a 200 with :
 	"status": "login successful"<br>
 }
 
-And a session cookie that look like :
+And a session cookie that looks like :
 
 >sessionid: 4cojwlx1izctcaugt0a8kxmnu146jk60
 
 This session cookie have a 2 hours live spawn in the server side (unless the session data is updated). On the client side, the session cookie doesn't have any expiry time. Instead it's deleted when the user close the navigator.
 
-Else it returns a 400 with :
+Connection also send a crsftoken, to prevent crsf attacks.
+
+If"stay_connected": true is in the body of the request, then the session cookie will be set to 90 days instead of 2 hours (client and server side).
+
+Else it returns a 401 with :
 
 >{<br>
 	"error": "Invalid Credentials"<br>

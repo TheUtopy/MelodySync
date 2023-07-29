@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError as DRFValidationError
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.core.exceptions import ValidationError as DjangoValidationError
 
 
@@ -39,10 +39,14 @@ class UserViewSet(ModelViewSet):
     def login(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
+        stay_connected = request.data.get('stay_connected')
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
+            login(request, user)
             request.session['username'] = username
+            if stay_connected:
+                request.session.set_expiry(60 * 60 * 24 * 90)
             return Response({'status': 'login successful'}, status=status.HTTP_200_OK)
         else:
-            return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Invalid Credentials'}, status=status.HTTP_401_UNAUTHORIZED)

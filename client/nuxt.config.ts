@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
+
   app: {
     head: {
       title: 'Melody Sync',
