@@ -81,3 +81,9 @@ Else it returns a 401 with :
 >{<br>
 	"error": "Invalid Credentials"<br>
 }
+
+If the data sent is missing either username or password, it return a 400:
+
+>{<br>
+	"error": "Missing Credentials"<br>
+}

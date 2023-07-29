@@ -39,6 +39,10 @@ class UserViewSet(ModelViewSet):
     def login(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
+
+        if not username or not password:
+            return Response({'error': 'Missing Credentials'}, status=status.HTTP_400_BAD_REQUEST)
+
         stay_connected = request.data.get('stay_connected')
         user = authenticate(request, username=username, password=password)
 
