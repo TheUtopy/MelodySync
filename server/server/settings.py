@@ -106,6 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {
+        'NAME': 'MelodySync.validators.CustomPasswordValidator'
+    },
 ]
 
 
@@ -131,5 +134,21 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Do use this in production :
-CORS_ALLOW_ALL_ORIGINS = True
+AUTH_USER_MODEL = 'MelodySync.User'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+SESSION_COOKIE_AGE = 2 * 60 * 60
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
