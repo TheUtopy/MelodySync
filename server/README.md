@@ -74,7 +74,7 @@ This session cookie have a 2 hours live spawn in the server side (unless the ses
 
 Connection also send a crsftoken, to prevent crsf attacks.
 
-If"stay_connected": true is in the body of the request, then the session cookie will be set to 90 days instead of 2 hours (client and server side).
+If "stay_connected": true is in the body of the request, then the session cookie will be set to 90 days instead of 2 hours (client and server side).
 
 Else it returns a 401 with :
 
