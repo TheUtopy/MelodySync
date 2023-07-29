@@ -99,8 +99,11 @@ export default {
                     this.$router.push('/empty');
                 }
             } catch (error) {
-                if (error.message === 'Invalid Credentials')
+                if (error.message === 'Invalid Credentials') {
                     alert('Username/Password combination doesn\'t match in the database.');
+                } else if (error.message === 'Missing Credentials') {
+                    alert('Please enter your username and password.');
+                }
             }
         },
     },
