@@ -1,7 +1,7 @@
 # Projet MelodySync
 
 - [Backend Documentation](./server/README.md)
-- [Frontend Documentation](./server/README.md)
+- [Frontend Documentation](./client/README.md)
 
 
 ## Idée globale du projet :
