@@ -72,7 +72,24 @@ export default {
         },
 
         async submitFormData(formData) {
-            console.log(formData);
+            try {
+                const response = await fetch('http://localhost:8000/api/contact/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData),
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data['error']);
+                } else {
+                    console.log(data)
+                    this.$router.push('/');
+                }
+            } catch (error) {
+                alert(error.message);
+            }
         },
 
         handleFirstClick() {
