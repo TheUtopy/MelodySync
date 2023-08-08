@@ -152,3 +152,5 @@ REST_FRAMEWORK = {
 
 SESSION_COOKIE_AGE = 2 * 60 * 60
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

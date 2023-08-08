@@ -1,5 +1,5 @@
 from django.contrib import admin
-from MelodySync.models import User
+from MelodySync.models.UserModel import User
 
 class UserAdmin(admin.ModelAdmin):
 
