@@ -2,6 +2,7 @@
 
 - [SIGN-UP](#sign-up)
 - [LOGIN](#login)
+- [CONTACT](#contact)
 
 ## SIGN UP
 
@@ -86,4 +87,41 @@ If the data sent is missing either username or password, it return a 400:
 
 >{<br>
 	"error": "Missing Credentials"<br>
+}
+
+
+## CONTACT
+
+### POST /api/contact/
+
+Expected format :
+
+>{<br>
+	"email": "example@mail.com",<br>
+	"message": "Message Content"<br>
+}
+
+Should return a 200 with :
+>{<br>
+	"Success": "Email sent"<br>
+}
+
+It also send a fictive email using the EMAIL_BACKEND option of Django.<br>
+
+If the email or message field is empty or if the message field is "Your message goes here.", return a 400 :
+
+>{<br>
+	"error": "Email and/or message fields are empty."<br>
+}
+
+If the message is more than 500 characters long, return a 400:
+
+>{<br>
+	"error": "Message is too long. Must be 500 characters max."<br>
+}
+
+If the email is not valid, return a 400 : 
+
+>{<br>
+	"error": "Enter a valid email address."<br>
 }

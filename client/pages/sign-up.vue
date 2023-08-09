@@ -5,7 +5,7 @@
       <article class=" flex flex-col md:flex-row justify-evenly">
         <div class="mx-auto pl-10">
           <h2 class="pb-8">Sign Up</h2>
-          <form @submit="submitForm" class="text-pinky-1000 font-serif pb-6">
+          <form @submit.prevent="submitForm" class="text-pinky-1000 font-serif pb-6">
             <FieldInForm label="Username" inputId="username" inputType="text" :input-value="username"
               @update:input-value="username = $event" />
             <FieldInForm label="Email" inputId="email" inputType="email" :input-value="email"
@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     async submitForm(e) {
-      e.preventDefault();
       // Vérification des champs requis
       try {
         this.validateRequiredFields();

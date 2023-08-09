@@ -7,8 +7,8 @@ from django.contrib.auth import authenticate, login
 from django.core.exceptions import ValidationError as DjangoValidationError
 
 
-from .serializers import UserSerializer
-from .models import User
+from MelodySync.serializers.UserSerializer import UserSerializer
+from MelodySync.models.UserModel import User
 
 
 class UserViewSet(ModelViewSet):

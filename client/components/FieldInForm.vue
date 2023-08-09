@@ -2,7 +2,7 @@
   <div class="relative pb-8">
 
     <label :for="inputId"
-      :class="{ 'top-[-20px] left-0 text-[0.8rem] bg-pinky-700 px-2 text-pinky-100 rounded-lg border-4 border-pinky-1000': inputValue !== '' || labelActive }"
+      :class="{ 'top-[-20px] left-0 bg-pinky-700 px-2 text-pinky-100 rounded-lg border-4 border-pinky-1000 text-[0.8rem]': inputValue !== '' || labelActive }"
       class="absolute top-4 left-5 transition-all pointer-events-none text-xl">
       {{ label }}
     </label>
