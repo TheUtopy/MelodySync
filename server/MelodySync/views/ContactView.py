@@ -16,7 +16,7 @@ class ContactView(APIView):
             return Response({'error': 'Email and/or message fields are empty.'}, status=status.HTTP_400_BAD_REQUEST)
 
         if len(message) > 500:
-            return Response({'error': 'Message is too long. Must be 500 charracters max.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Message is too long. Must be 500 characters max.'}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
             validate_email(email)
@@ -31,7 +31,6 @@ class ContactView(APIView):
             return Response({'Success': 'Email sent'}, status=status.HTTP_200_OK)
 
         except ValidationError as e:
-            print(e)
             response_data = {'error' : e.messages[0]}
             return Response(response_data, status=status.HTTP_400_BAD_REQUEST)
 

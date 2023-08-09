@@ -117,7 +117,7 @@ If the email or message field is empty or if the message field is "Your message 
 If the message is more than 500 characters long, return a 400:
 
 >{<br>
-	"error": "Message is too long. Must be 500 charracters max."<br>
+	"error": "Message is too long. Must be 500 characters max."<br>
 }
 
 If the email is not valid, return a 400 : 

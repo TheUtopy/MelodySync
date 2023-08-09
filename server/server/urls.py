@@ -13,6 +13,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
-    path('api/contact/', ContactView.as_view()),
+    path('api/contact/', ContactView.as_view(), name='contact'),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

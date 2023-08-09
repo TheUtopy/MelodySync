@@ -1,7 +1,7 @@
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
-from django.contrib.auth import get_user_model
 
 
 class TestUserLogin(APITestCase):
