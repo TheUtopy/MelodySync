@@ -11,7 +11,7 @@
                         
                         <div>
                             <label for="message" class="sr-only">Message</label>
-                            <textarea id="message" v-model="message" @input="handleMessageInput"  @click="handleFirstClick" required class="p-5 mb-4 rounded-md h-[18rem] w-[30rem]"></textarea>
+                            <textarea id="message" v-model="message" @input="handleMessageInput"  @focus="handleFocusOnMessageField" required class="p-5 mb-4 rounded-md h-[18rem] w-[30rem]"></textarea>
                         </div>
                         <div ref="messageCount" class="text-sm text-gray-400 hidden">{{ charCount }}/500 characters remaining</div>
                         <br/>
@@ -92,7 +92,7 @@ export default {
             }
         },
 
-        handleFirstClick() {
+        handleFocusOnMessageField() {
             if (!this.firstClick) {
                 this.message = '';
                 this.firstClick = true;
