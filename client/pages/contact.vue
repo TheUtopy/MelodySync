@@ -85,7 +85,7 @@ export default {
                     throw new Error(data['error']);
                 } else {
                     console.log(data)
-                    this.$router.push('/');
+                    this.$router.push('/contact-sent');
                 }
             } catch (error) {
                 alert(error.message);
