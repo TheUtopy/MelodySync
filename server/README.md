@@ -3,6 +3,7 @@
 - [SIGN-UP](#sign-up)
 - [LOGIN](#login)
 - [CONTACT](#contact)
+- [POST](#create-post)
 
 ## SIGN UP
 
@@ -125,3 +126,41 @@ If the email is not valid, return a 400 :
 >{<br>
 	"error": "Enter a valid email address."<br>
 }
+
+## CREATE POST
+### POST /api/post/
+
+Expected format :
+
+>{<br>
+	"message": "A message"<br>
+}
+
+Should return a 201 with :
+
+>{<br>
+	"post": "created"<br>
+}
+
+If the message field is empty, 400 :
+
+>
+
+If sent without sessionid cookie, 400 :
+>{<br>
+	"error": "Missing session cookie"<br>
+}
+
+If there's no corresponding session in the DB, 400 :
+
+>{<br>
+	"error": "Session matching query does not exist."<br>
+}
+ 
+If there's no user matching the user_id retrieved via the session, 400 : 
+
+>{<br>
+	"error": "User matching query does not exist."<br>
+}
+
+
