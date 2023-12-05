@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from MelodySync.models.UserModel import User
-from MelodySync.models.PostModel import Post
+from MelodySync.models.user_model import User
+from MelodySync.models.post_model import Post
 
 
 @admin.register(User)

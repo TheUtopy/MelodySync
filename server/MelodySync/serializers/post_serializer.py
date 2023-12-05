@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, ValidationError
 
-from MelodySync.models.PostModel import Post
+from MelodySync.models.post_model import Post
 
 class PostSerializer(ModelSerializer):
 

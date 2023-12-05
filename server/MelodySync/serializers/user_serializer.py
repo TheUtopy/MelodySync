@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer
 from django.core import exceptions
 from django.contrib.auth.password_validation import validate_password
 
-from MelodySync.models.UserModel import User
+from MelodySync.models.user_model import User
 
 
 class UserSerializer(ModelSerializer):

@@ -2,9 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from MelodySync.views.PostView import PostViewSet
-from MelodySync.views.UserView import UserViewSet
-from MelodySync.views.ContactView import ContactView
+from MelodySync.views.post_view import PostViewSet
+from MelodySync.views.user_view import UserViewSet
+from MelodySync.views.contact_view import ContactView
 
 router = routers.SimpleRouter()
 

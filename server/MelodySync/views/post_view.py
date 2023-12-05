@@ -4,9 +4,9 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.exceptions import ValidationError
 
-from MelodySync.serializers.PostSerializer import PostSerializer
-from MelodySync.models.PostModel import Post
-from MelodySync.models.UserModel import User
+from MelodySync.serializers.post_serializer import PostSerializer
+from MelodySync.models.post_model import Post
+from MelodySync.models.user_model import User
 
 
 class PostViewSet(ModelViewSet):
